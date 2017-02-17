@@ -1,0 +1,93 @@
+body{
+	background: none repeat scroll 0 0 #fff;
+}
+h1{
+	font-family: Consolas;
+	color: #aaa;
+	font-style: 18px;
+	text-align: center;
+	background: none repeat scroll 0 0 #fff;
+	margin-left: 0px;
+	top: 10px;
+	width: 800px;
+}
+table{
+	border-collapse: collapse;
+	border: 2px solid black;
+	position: relative;
+	margin-top: 45px;
+	margin-left: 50px;
+}
+td{
+	border: 0px solid #555;
+}
+.grey:hover{
+	background: #0f0;
+	opacity: 0.5;
+}
+.white:hover{
+	background: #0f0;
+	opacity: 0.5;
+}
+.grey{
+	border: 2px solid black;
+	text-align: center;
+	background-color: #999;
+	width: 80px;
+	height: 80px;
+    font-size:50px;
+    display: table-cell;
+    vertical-align:middle;
+}
+.white{
+	border: 2px solid black;
+	text-align: center;
+	background-color: #fff;
+	width: 80px;
+	height: 80px;
+	font-size: 50px;
+	display: table-cell;
+    vertical-align:middle;
+
+}
+.number{
+	font-family: Consolas;
+	color: "black";
+	font-size: 18px;
+	text-align: center;
+	background-color: #bbb !important;
+	position:static;
+	width: 40px;
+	height: 40px;
+}
+.letter{
+	font-family: Consolas;
+	color:"black";
+	font-size: 18px;
+	text-align: center;
+	background-color: #bbb !important;
+	position:static;
+	width: 40px;
+	height: 40px;
+}
+.chessboard {
+    width: 640px;
+    height: 640px;
+    margin: 20px;
+    border: 25px solid #333;
+}
+.chess-piece{
+	width: 60px;
+	height: 60px;
+
+}
+.note{
+	font-family: Consolas;
+	color: #333;
+	font-size: 14px;
+	margin-left: 50px;
+	text-align: center;
+	opacity: 0.5;
+	position:fixed;
+	bottom: 10px;
+}

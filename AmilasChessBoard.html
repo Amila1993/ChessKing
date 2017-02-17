@@ -1,0 +1,129 @@
+  <!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" href="_images/b4.png">
+	<link rel="stylesheet" href="_css/style.css">
+	<meta charset="utf-8">
+	<meta name="viewpoint" content="width=device-width,initial-scale=1,maximum scale=1"/>
+	<meta name="keywords" content="HTML,CSS,JavaScript,jquery">
+
+	<script type="text/javascript" src="_js/jquery-3.1.1.min.js"></script>
+	
+</head>
+<title>Amila's Chess Board</title>
+<body>
+<h1>CHESS</h1>
+
+<table id="ChessBoardTbl" ondrop="drop(event)" ondragover="allowDrop(event)">
+<!--ROW 1-->
+<tr>
+	<td class="number" >0</td>
+	<td class="white"><img class="B_Rook" id="BlR" src="_images/b5.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="grey"><img class="B_Knight" id="BlK" src="_images/b4.png" draggable="true" ondragstart="drag(event)"></td></td>
+	<td class="white"><img class="B_Bishop" id="BlB" src="_images/b3.png" draggable="true" ondragstart="drag(event)"></td></td>
+	<td class="grey"><img class="B_King" id="BK" src="_images/b1.png" draggable="true" ondragstart="drag(event)"></td></td>
+	<td class="white"><img class="B_Queen" id="BQ" src="_images/b2.png" draggable="true" ondragstart="drag(event)"></td></td>	
+	<td class="grey"><img class="B_Bishop" id="BrB" src="_images/b3.png" draggable="true" ondragstart="drag(event)"></td></td>
+	<td class="white"><img class="B_Knight" id="BrK" src="_images/b4.png" draggable="true" ondragstart="drag(event)"></td></td>
+	<td class="grey"><img class="B_Rook" id="BrR" src="_images/b5.png" draggable="true" ondragstart="drag(event)"></td></td>
+</tr>
+<!--ROW 2-->
+<tr>
+	<td class="number">1</td>
+	<td class="grey"><img class="Bpawn" id="BP1" src="_images/b6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="white"><img class="Bpawn" id="BP2" src="_images/b6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="grey"><img class="Bpawn" id="BP3" src="_images/b6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="white"><img class="Bpawn" id="BP4" src="_images/b6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="grey"><img class="Bpawn" id="BP5" src="_images/b6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="white"><img class="Bpawn" id="BP6" src="_images/b6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="grey"><img class="Bpawn" id="BP7" src="_images/b6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="white"><img class="Bpawn" id="BP8" src="_images/b6.png" draggable="true" ondragstart="drag(event)"></td>
+</tr>
+<!--ROW 3-->
+<tr>
+	<td id="3.1" class="number">2</td>
+	<td id="32" class="white"></td>
+	<td id="3.3" class="grey"></td>
+	<td id="3.4" class="white"></td>
+	<td id="3.5" class="grey"></td>
+	<td id="3.6" class="white"></td>
+	<td id="3.7" class="grey"></td>
+	<td id="3.8" class="white"></td>
+	<td id="3.9" class="grey"></td>
+</tr>
+<!--ROW 4-->
+<tr>
+	<td id="4.1" class="number">3</td>
+	<td id="42" class="grey"></td>
+	<td id="4.3" class="white"></td>
+	<td id="4.4" class="grey"></td>
+	<td id="4.5" class="white"></td>
+	<td id="4.6" class="grey"></td>
+	<td id="4.7" class="white"></td>
+	<td id="4.8" class="grey"></td>
+	<td id="4.9" class="white"></td>
+</tr>
+<!--ROW 5-->
+<tr>
+	<td class="number">4</td>
+	<td class="white"></td>
+	<td class="grey"></td>
+	<td class="white"></td>
+	<td class="grey"></td>
+	<td class="white"></td>
+	<td class="grey"></td>
+	<td class="white"></td>
+	<td class="grey"></td>
+</tr>
+<!--ROW 6-->
+<tr>
+	<td class="number">5</td>
+	<td class="grey"></td>
+	<td class="white"></td>
+	<td class="grey"></td>
+	<td class="white"></td>
+	<td class="grey"></td>
+	<td class="white"></td>
+	<td class="grey"></td>
+	<td class="white"></td>
+</tr>
+<!--ROW 7-->
+<tr>
+	<td class="number">6</td>
+	<td class="white"><img class="Wpawn" id="WP1" src="_images/6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="grey"><img class="Wpawn" id="WP2" src="_images/6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="white"><img class="Wpawn" id="WP3" src="_images/6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="grey"><img class="Wpawn" id="WP4" src="_images/6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="white"><img class="Wpawn" id="WP5" src="_images/6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="grey"><img class="Wpawn" id="WP6" src="_images/6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="white"><img class="Wpawn" id="WP7" src="_images/6.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="grey"><img class="Wpawn" id="WP8" src="_images/6.png" draggable="true" ondragstart="drag(event)"></td>
+</tr>
+<!--ROW 8-->
+<tr>
+	<td class="number">7</td>
+	<td class="grey"><img class="W_Rook" id="WlR" src="_images/5.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="white"><img class="W_Knight" id="WlK" src="_images/4.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="grey"><img class="W_Bishop" id="WlB" src="_images/3.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="white"><img class="W_Queen" id="WQ" src="_images/2.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="grey"><img class="W_King" id="WK" src="_images/1.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="white"><img class="W_Bishop" id="WrB" src="_images/3.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="grey"><img class="W_Knight" id="WrK" src="_images/4.png" draggable="true" ondragstart="drag(event)"></td>
+	<td class="white"><img class="W_Rook" id="WrR" src="_images/5.png" draggable="true" ondragstart="drag(event)"></td>
+</tr>
+<!--ROW 9-->
+<tr>
+	<td class="number">8</td>
+	<td class="letter">1</td>
+	<td class="letter">2</td>
+	<td class="letter">3</td>
+	<td class="letter">4</td>
+	<td class="letter">5</td>
+	<td class="letter">6</td>
+	<td class="letter">7</td>
+	<td class="letter">8</td>
+</tr>
+<p id="below"></p>
+<script src="_js/javaScript.js"></script>
+</body>
+</html>
