@@ -7,65 +7,35 @@ function drag(ev) {
 	}
 
 function drop(ev) {
-    // ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    console.log("data    "+data);
-    var drag_piece_id = ev.dataTransfer.getData("text");
-    console.log("drag_piece_id      "+drag_piece_id);
-
-    var target_cell = ev.target;
-    console.log("target_cell       "+target_cell);
-    console.log("target_cell.bgColor     "+target_cell.bgColor);
-
-    var rowtest = $(target_cell).parent().parent().index();
-    var coltest = $(target_cell).parent().index();
-    console.log("rowtest: "+rowtest+" coltest: "+coltest);
-    var capture_cell = $('#ChessBoardTbl tr:eq(' + (rowtest) + ') td:eq(' + (coltest) + ')');
-    var img_id = $(capture_cell).children().attr("id");
-
-    if (capture(capture_cell,drag_piece_id,target_cell)) {
-    	ev.target.appendChild(document.getElementById(data));
-    }
-    else{
-    	$(document).ready(function(){
-	   				var cell_ado = $('#ChessBoardTbl tr:eq(' + (rowtest) + ') td:eq(' + (coltest) + ')');
-	   				var img = document.createElement('img');
-    				img.src = "_images/b1.png";
-    				cell_ado= "<img src='_images/b1.png'/>";
-          			// cell_ado .css("background-color","black");
-    		});
-    }	
-	}
-
-function capture(capture_cell,drag_piece_id,target_cell){
-	var img_id = $(capture_cell).children().attr("id");
-	var img_src = $(capture_cell).children().attr("src");
-	console.log("img_id         "+img_id);
-
-	console.log("img_id.charAt(0)   :  "+img_id.charAt(0));
-	console.log("drag_piece_id.charAt(0)  :   "+drag_piece_id.charAt(0));
-
-	if (target_cell.bgColor==undefined) {
-		if (img_id.charAt(0) !== drag_piece_id.charAt(0)) {
-			$(capture_cell).children().remove();
-			// var img = document.createElement('img');
-    		// var cell_1 = $('#ChessBoardTbl tr:eq(' + (3) + ') td:eq(' + (5) + ')');
-    		// cell = document.getElementById('table1').rows[4].cells[4];
-    		// console.log("cell   "+cell);
-    		// cell_1.style.backgroundColor = "black";
-    		var img = document.createElement('img');
-    		img.src = "_images/5.png";
-
-			return false;
+	    var data = ev.dataTransfer.getData("text");
+	    
+	//Target cell
+	    var trgt_row = $(ev.target).parent().parent().index();
+	    var trgt_col = $(ev.target).parent().index();
+	    var capture_cell = $('#ChessBoardTbl tr:eq(' + (trgt_row) + ') td:eq(' + (trgt_col) + ')');
+	//Intersecting pieces
+	    var drag_piece_id = ev.dataTransfer.getData("text");
+	    var cap_img_id = $(capture_cell).children().attr("id");
+	    var drag_image=document.getElementById(drag_piece_id);
+		var cap_image=document.getElementById(cap_img_id);
+	//Occupied cells
+		if (ev.target.bgColor==undefined) {
+		//Showing details	
+			console.log(drag_piece_id+" to "+cap_img_id+" in "+"("+trgt_row+","+trgt_col+")");
+		//Same color cells
+			if (drag_piece_id.charAt(0) !== cap_img_id.charAt(0)) {
+				$(cap_image).remove();
+		   		$(drag_image).detach().appendTo($(capture_cell));
+			}		
 		}
+	//Unoccupied cells
 		else{
-			return true;
+			ev.target.appendChild(document.getElementById(data));
 		}
+
 	}
-	else{
-			return true;
-	}	
-}	
+
+	
 
 function B_radar(cell){
 	var op_nm = $(cell).children().attr("id");
