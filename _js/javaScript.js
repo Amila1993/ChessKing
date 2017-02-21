@@ -9,16 +9,16 @@ function drag(ev) {
 function drop(ev) {
 	    var data = ev.dataTransfer.getData("text");
 	    
-	//Target cell
+		//Target cell
 	    var trgt_row = $(ev.target).parent().parent().index();
 	    var trgt_col = $(ev.target).parent().index();
 	    var capture_cell = $('#ChessBoardTbl tr:eq(' + (trgt_row) + ') td:eq(' + (trgt_col) + ')');
-	//Intersecting pieces
+		//Intersecting pieces
 	    var drag_piece_id = ev.dataTransfer.getData("text");
 	    var cap_img_id = $(capture_cell).children().attr("id");
 	    var drag_image=document.getElementById(drag_piece_id);
 		var cap_image=document.getElementById(cap_img_id);
-	//Occupied cells
+		//Occupied cells
 		if (ev.target.bgColor==undefined) {
 		//Showing details	
 			console.log(drag_piece_id+" to "+cap_img_id+" in "+"("+trgt_row+","+trgt_col+")");
@@ -28,12 +28,12 @@ function drop(ev) {
 		   		$(drag_image).detach().appendTo($(capture_cell));
 			}		
 		}
-	//Unoccupied cells
+		//Unoccupied cells
 		else{
 			ev.target.appendChild(document.getElementById(data));
 		}
 
-	}
+		}
 
 	
 
@@ -79,7 +79,12 @@ function W_radar(cell){
 	   		}	  		
 	}
 
-function B_pawn_radar(cell,cellE1,cellE2){
+function B_pawn_radar(cell,cell2,cellE1,cellE2,row_index){
+		var op_nm2 = $(cell2).children().attr("id");
+		//2nd row special movement avoid
+		if ((row_index!=1) || (op_nm2!=null)) {
+			cell2=null;
+		}
 
 		var op_nm = $(cell).children().attr("id");
 			// Identify intruder	
@@ -87,14 +92,17 @@ function B_pawn_radar(cell,cellE1,cellE2){
 	   	   //Enemy and Friendly
 		   		if (op_nm.charAt(0)=="W","B") {
 		   			$( cell ).css("background-color", "");
+		   			$( cell2 ).css("background-color", "");
 		   					}
 		   		else{
 		   			$( cell ).css("background-color", "#90ee90");
+		   			$( cell2 ).css("background-color", "#90ee90");
 		   		}				
 		   	}	
 		   //No_one
 		   	else {
 		   			$( cell ).css("background-color", "#90ee90");
+		   			$( cell2 ).css("background-color", "#90ee90");
 		   		}
 			//Elimination mode 1
 		var op_nm1 = $(cellE1).children().attr("id");
@@ -139,7 +147,14 @@ function B_pawn_radar(cell,cellE1,cellE2){
 		   		}
 		}
 
-function W_pawn_radar(cell,cellE1,cellE2){
+function W_pawn_radar(cell,cell2,cellE1,cellE2,row_index){
+
+		var op_nm2 = $(cell2).children().attr("id");
+		//2nd row special movement avoid
+		if ((row_index!=6) || (op_nm2!=null)) {
+			cell2=null;
+		}
+
 
 		var op_nm = $(cell).children().attr("id");
 			// Identify intruder	
@@ -147,14 +162,17 @@ function W_pawn_radar(cell,cellE1,cellE2){
 	   	   //Enemy and Friendly
 		   		if (op_nm.charAt(0)=="W","B") {
 		   			$( cell ).css("background-color", "");
+		   			$( cell2 ).css("background-color", "");
 		   					}
 		   		else{
 		   			$( cell ).css("background-color", "#90ee90");
+		   			$( cell2 ).css("background-color", "#90ee90");
 		   		}				
 		   	}	
 		   //No_one
 		   	else {
 		   			$( cell ).css("background-color", "#90ee90");
+		   			$( cell2 ).css("background-color", "#90ee90");
 		   		}
 			//Elimination mode 1
 		var op_nm1 = $(cellE1).children().attr("id");
@@ -207,9 +225,10 @@ function W_pawn_radar(cell,cellE1,cellE2){
    					var col_index = $(this).parent().index();
    					// console.log("row_index: "+row_index+" col_index: "+col_index);
    					var cell = $('#ChessBoardTbl tr:eq(' + (row_index+1) + ') td:eq(' + col_index + ')');
+   					var cell2 = $('#ChessBoardTbl tr:eq(' + (row_index+2) + ') td:eq(' + col_index + ')');
    					var cellE1 = $('#ChessBoardTbl tr:eq(' + (row_index+1) + ') td:eq(' + (col_index+1) + ')');
    					var cellE2 = $('#ChessBoardTbl tr:eq(' + (row_index+1) + ') td:eq(' + (col_index-1) + ')');
-	  				B_pawn_radar(cell,cellE1,cellE2);
+	  				B_pawn_radar(cell,cell2,cellE1,cellE2,row_index);
 
 
 			});
@@ -227,9 +246,10 @@ function W_pawn_radar(cell,cellE1,cellE2){
    					var col_index = $(this).parent().index();
    					// console.log("row_index: "+row_index+" col_index: "+col_index);
    					var cell = $('#ChessBoardTbl tr:eq(' + (row_index-1) + ') td:eq(' + col_index + ')');
+   					var cell2 = $('#ChessBoardTbl tr:eq(' + (row_index-2) + ') td:eq(' + col_index + ')');
    					var cellE1 = $('#ChessBoardTbl tr:eq(' + (row_index-1) + ') td:eq(' + (col_index+1) + ')');
    					var cellE2 = $('#ChessBoardTbl tr:eq(' + (row_index-1) + ') td:eq(' + (col_index-1) + ')');
-	  				W_pawn_radar(cell,cellE1,cellE2);
+	  				W_pawn_radar(cell,cell2,cellE1,cellE2,row_index);
 			});
 				$(".Wpawn").mouseout(function(){
    					$("td").each (function () {

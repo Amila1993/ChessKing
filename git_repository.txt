@@ -1,0 +1,19 @@
+$ git remote add origin https://github.com/IshaniShashikala/Chessboard.git
+
+$ git push -u origin master
+
+$ git init
+
+$ git remote add origin https://github.com/IshaniShashikala/Chessboard.git
+
+$ git status
+
+$ git add .
+
+$ git status
+
+$ git commit -m("First Commit")
+
+$ git commit -m"First Commit"
+
+$ git push
